@@ -23,8 +23,9 @@ async def on_message(message):
 
     print(f"[{message.author}] (channel={message.channel}): {message.content}")
 
+    user_id = message.author.id
     user_question = message.content
-    answer = await asyncio.to_thread(ask_llm, user_question)
+    answer = await asyncio.to_thread(ask_llm, user_question, user_id)
     await message.channel.send(answer) # sends the reply
     print("Message Answered") 
 
